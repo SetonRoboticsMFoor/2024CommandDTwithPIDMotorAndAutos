@@ -24,8 +24,8 @@ public class AutoDriveCom extends Command {
 
   @Override
   public void execute() {
-    
-    m_subsystem.arcadeDrive(zSpeed, ySpeed);
+    //For some reason the y speed likes to be on the right
+    m_subsystem.arcadeDrive(-zSpeed, ySpeed);
   }
 
   @Override

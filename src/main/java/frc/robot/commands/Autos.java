@@ -7,6 +7,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrainSub;
 
 public final class Autos {
@@ -16,7 +17,7 @@ public final class Autos {
   public static Command middleAuto(DriveTrainSub subsystem) {
     return Commands.sequence(
       //drive forward: timeout changes for how long
-      new AutoDriveCom(subsystem, -.25, 0).withTimeout(1)
+      new AutoDriveCom(subsystem, Constants.MIDDLE_AUTO_FORWARD_SPEED, 0).withTimeout(Constants.MIDDLE_AUTO_FORWARD_TIME)
     );
   }
 
@@ -24,11 +25,11 @@ public final class Autos {
   public static  Command rightAuto(DriveTrainSub subsystem) {
     return Commands.sequence(
       //turn right for one second
-      new AutoDriveCom(subsystem, 0, .25).withTimeout(1),
+      new AutoDriveCom(subsystem, 0, Constants.RIGHT_AUTO_TURN_SPEED).withTimeout(Constants.RIGHT_AUTO_TURN_TIME),
       //pause for one second
-      new AutoDriveCom(subsystem, 0, 0).withTimeout(1),
+      new AutoDriveCom(subsystem, 0, 0).withTimeout(Constants.RIGHT_AUTO_FORWARD__PAUSE_TIME),
       //go forward for 3 seconds
-      new AutoDriveCom(subsystem,-.25, 0).withTimeout(3)
+      new AutoDriveCom(subsystem,Constants.RIGHT_AUTO_FORWARD_SPEED, 0).withTimeout(Constants.RIGHT_AUTO_FORWARD_TIME)
 
     );
   }
@@ -36,11 +37,11 @@ public final class Autos {
    public static  Command leftAuto(DriveTrainSub subsystem) {
     return Commands.sequence(
       //turn left for one second
-      new AutoDriveCom(subsystem, 0, -.25).withTimeout(1),
+      new AutoDriveCom(subsystem, 0, Constants.LEFT_AUTO_TURN_SPEED).withTimeout(Constants.LEFT_AUTO_TURN_TIME),
       //pause for one second
-      new AutoDriveCom(subsystem, 0, 0).withTimeout(1),
+      new AutoDriveCom(subsystem, 0, 0).withTimeout(Constants.LEFT_AUTO_FORWARD__PAUSE_TIME),
       //go forward for 3 seconds
-      new AutoDriveCom(subsystem, -.25, 0).withTimeout(3)
+      new AutoDriveCom(subsystem,Constants.LEFT_AUTO_FORWARD_SPEED, 0).withTimeout(Constants.LEFT_AUTO_FORWARD_TIME)
 
     );
   }
